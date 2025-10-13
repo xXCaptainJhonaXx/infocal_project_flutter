@@ -20,7 +20,8 @@ class MyHome extends StatelessWidget {
               left: 30,
               right: 30,
             ),
-            child: DescriptionPlace(),
+            //parametros descriptionPlace
+            child: DescriptionPlace("Uyuni", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio lectus, lacinia vel congue eu, fringilla id sem. Mauris faucibus diam purus, eget tincidunt arcu vestibulum vitae. Duis non orci vitae augue sodales eleifend consequat vel massa. Suspendisse potenti. Nam nec fermentum sem, eget sodales odio. Fusce sed volutpat massa. In vehicula ut tortor in consequat. Duis bibendum ipsum quis purus faucibus, et fringilla est pulvinar. Sed laoreet non orci non bibendum. Donec rhoncus eget est quis imperdiet. Vestibulum vitae aliquet magna, nec tempus eros. Ut interdum dolor ut elit hendrerit, id porta libero consequat. Nam vulputate elit quis aliquam mollis. Praesent ornare sagittis ornare."),
           ),
         ],
       ),

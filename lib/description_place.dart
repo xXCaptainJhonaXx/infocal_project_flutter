@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class DescriptionPlace extends StatelessWidget {
+
+  //variables
+  String textoTitulo;
+  int cantidadEstrellas;
+  String textoDescripcion;
+
+   DescriptionPlace(this.textoTitulo, this.cantidadEstrellas, this.textoDescripcion);
+
   @override
   Widget build(BuildContext context) {
 
@@ -9,7 +17,7 @@ class DescriptionPlace extends StatelessWidget {
         right: 20
       ),
       child: Text(
-        "Duwili Ella",
+        textoTitulo,
         style: TextStyle(
           fontSize: 38,
           fontWeight: FontWeight.bold
@@ -37,14 +45,20 @@ class DescriptionPlace extends StatelessWidget {
       ),
     );
 
+    //fila estrella
+
+    List<Container> estrellas = [];
+    for (int i = 0; i < 5; i++) {
+      if (i < cantidadEstrellas) {
+        estrellas.add(estrella);
+      } else {
+        estrellas.add(estrellaBorde);
+      }
+    }
+
+
     final filaEstrellas = Row(
-      children: <Widget>[
-        estrella,
-        estrella,
-        estrella,
-        estrella,
-        estrellaBorde
-      ],
+      children: estrellas,
     );
 
     final filaTitulo = Row(
@@ -59,7 +73,7 @@ class DescriptionPlace extends StatelessWidget {
         top: 10
       ),
       child: Text(
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio lectus, lacinia vel congue eu, fringilla id sem. Mauris faucibus diam purus, eget tincidunt arcu vestibulum vitae. Duis non orci vitae augue sodales eleifend consequat vel massa. Suspendisse potenti. Nam nec fermentum sem, eget sodales odio. Fusce sed volutpat massa. In vehicula ut tortor in consequat. Duis bibendum ipsum quis purus faucibus, et fringilla est pulvinar. Sed laoreet non orci non bibendum. Donec rhoncus eget est quis imperdiet. Vestibulum vitae aliquet magna, nec tempus eros. Ut interdum dolor ut elit hendrerit, id porta libero consequat. Nam vulputate elit quis aliquam mollis. Praesent ornare sagittis ornare.",
+        textoDescripcion,
         style: TextStyle(
           color: Colors.black54
         ),
