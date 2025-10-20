@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:infocalproject/review.dart';
 import 'description_place.dart';
 
 class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    final descriptionPlace = Container(
+      margin: EdgeInsets.only(
+        top: 250,
+        left: 30,
+        right: 30,
+      ),
+      //parametros descriptionPlace
+      child: DescriptionPlace("Uyuni", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio lectus, lacinia vel congue eu, fringilla id sem. Mauris faucibus diam purus, eget tincidunt arcu vestibulum vitae. Duis non orci vitae augue sodales eleifend consequat vel massa. Suspendisse potenti. Nam nec fermentum sem, eget sodales odio. Fusce sed volutpat massa. In vehicula ut tortor in consequat. Duis bibendum ipsum quis purus faucibus, et fringilla est pulvinar. Sed laoreet non orci non bibendum. Donec rhoncus eget est quis imperdiet. Vestibulum vitae aliquet magna, nec tempus eros. Ut interdum dolor ut elit hendrerit, id porta libero consequat. Nam vulputate elit quis aliquam mollis. Praesent ornare sagittis ornare."),
+    );
+
+    final review = Container(
+      margin: EdgeInsets.only(
+        top: 300,
+        left: 30,
+        right: 30,
+      ),
+      height: 80,
+      child: Review(
+          "assets/images/pexels-sulimansallehi-1704488.jpg",
+          "Maria Elena",
+          "1 reviews - 3 photos",
+          2,
+          "Buen lugar para visitar."),
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
@@ -14,15 +41,8 @@ class MyHome extends StatelessWidget {
           Container(
             color: Colors.white,
           ),
-          Container(
-            margin: EdgeInsets.only(
-              top: 250,
-              left: 30,
-              right: 30,
-            ),
-            //parametros descriptionPlace
-            child: DescriptionPlace("Uyuni", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio lectus, lacinia vel congue eu, fringilla id sem. Mauris faucibus diam purus, eget tincidunt arcu vestibulum vitae. Duis non orci vitae augue sodales eleifend consequat vel massa. Suspendisse potenti. Nam nec fermentum sem, eget sodales odio. Fusce sed volutpat massa. In vehicula ut tortor in consequat. Duis bibendum ipsum quis purus faucibus, et fringilla est pulvinar. Sed laoreet non orci non bibendum. Donec rhoncus eget est quis imperdiet. Vestibulum vitae aliquet magna, nec tempus eros. Ut interdum dolor ut elit hendrerit, id porta libero consequat. Nam vulputate elit quis aliquam mollis. Praesent ornare sagittis ornare."),
-          ),
+          //descriptionPlace
+          review
         ],
       ),
     );

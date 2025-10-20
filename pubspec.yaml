@@ -92,3 +92,6 @@ fonts:
   - family: Lato
     fonts:
       -asset: assets/fonts/Lato-Regular.ttf
+
+assets:
+  - assets/images/pexels-sulimansallehi-1704488.jpg
