@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infocalproject/gradient_back.dart';
 import 'package:infocalproject/review.dart';
 import 'package:infocalproject/review_list.dart';
 import 'description_place.dart';
@@ -46,6 +47,7 @@ class MyHome extends StatelessWidget {
             color: Colors.white,
           ),
           //descriptionPlace
+          GradientBack(),
           listView
         ],
       ),
