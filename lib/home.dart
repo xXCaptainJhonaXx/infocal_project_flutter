@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:infocalproject/cardImage.dart';
 import 'package:infocalproject/gradient_back.dart';
+import 'package:infocalproject/home_appbar.dart';
 import 'package:infocalproject/review.dart';
 import 'package:infocalproject/review_list.dart';
 import 'description_place.dart';
@@ -46,9 +48,7 @@ class MyHome extends StatelessWidget {
           Container(
             color: Colors.white,
           ),
-          //descriptionPlace
-          GradientBack(),
-          listView
+          CardImage("assets/images/lugar1.jpg"),
         ],
       ),
     );
