@@ -12,7 +12,7 @@ class MyHome extends StatelessWidget {
 
     final descriptionPlace = Container(
       margin: EdgeInsets.only(
-        top: 250,
+        top: 300,
         left: 30,
         right: 30,
       ),
@@ -48,7 +48,8 @@ class MyHome extends StatelessWidget {
           Container(
             color: Colors.white,
           ),
-          CardImage("assets/images/lugar1.jpg"),
+          HomeAppBar("Popular"),
+          listView,
         ],
       ),
     );
