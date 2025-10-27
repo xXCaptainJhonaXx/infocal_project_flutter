@@ -15,9 +15,7 @@ class CardImageList extends StatelessWidget {
           CardImage("assets/images/lugar2.jpg"),
           CardImage("assets/images/lugar3.jpg"),
           CardImage("assets/images/lugar4.jpg"),
-          CardImage("assets/images/lugar5.jpg"),
-          CardImage("assets/images/lugar6.jpeg"),
-
+          CardImage("assets/images/lugar5.jpeg"),
         ],
       ),
     );

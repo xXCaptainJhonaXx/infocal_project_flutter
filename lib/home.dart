@@ -22,9 +22,9 @@ class MyHome extends StatelessWidget {
 
     final reviewList = Container(
       margin: EdgeInsets.only(
-        top: 250,
+        top: 70,
         left: 30,
-        right: 30,
+        right: 30
       ),
       child: ReviewList(),
     );

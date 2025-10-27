@@ -18,8 +18,8 @@ class Review extends StatelessWidget {
         top: 10,
         right: 10
       ),
-      width: 80,
-      height: 80,
+      width: 10,
+      height: 10,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
@@ -128,7 +128,8 @@ class Review extends StatelessWidget {
 
     final review = Row(
       children: <Widget>[
-        foto, columnaReview
+        foto,
+        columnaReview
       ],
     );
 
