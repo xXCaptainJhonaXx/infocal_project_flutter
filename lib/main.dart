@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:infocalproject/places.dart';
 import 'home.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity
       ),
-      home: MyHome(),
+      home: Places(),
     );
   }
   
