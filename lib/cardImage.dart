@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:infocalproject/fab_green.dart';
 
 class CardImage extends StatelessWidget {
   String path;
@@ -9,14 +10,15 @@ class CardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     //cardImage
 
-    final cardImage = Padding(
+    final card = Padding(
       padding: EdgeInsets.only(
-        top: 100,
+        top: 90,
         right: 15,
         bottom: 30,
       ),
       child: Container(
         width: 200,
+        height: 200,
         padding: EdgeInsets.only(
             top: 60
         ),
@@ -39,7 +41,16 @@ class CardImage extends StatelessWidget {
         ),
       ),
     );
-    return cardImage;
+
+    //stack
+    final cardImage = Stack(
+      alignment: Alignment(0.7, 0.95),
+      children: [
+        card,
+        FabGreen()
+      ],
+    );
+    return card;
   }
 
 }

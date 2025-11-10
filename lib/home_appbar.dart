@@ -14,7 +14,7 @@ class HomeAppBar extends StatelessWidget {
     //titulo
     final titulo = Container(
       margin: EdgeInsets.only(
-        top: 40,
+        top: 10,
         left: 30
       ),
       child: Text(

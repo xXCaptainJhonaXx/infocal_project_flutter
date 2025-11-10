@@ -18,8 +18,8 @@ class Review extends StatelessWidget {
         top: 10,
         right: 10
       ),
-      width: 10,
-      height: 10,
+      width: 60,
+      height: 60,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
@@ -65,7 +65,7 @@ class Review extends StatelessWidget {
       child: Icon(
         Icons.star,
         color: Colors.amber,
-        size: 18,
+        size: 20,
       ),
     );
 
@@ -96,9 +96,10 @@ class Review extends StatelessWidget {
     );
 
     //FILA RESUMEN
-    final filaResumen = Row(
+    final filaResumen = Column(
       children: <Widget>[
-        resumenUsuario, filaEstrellas
+        filaEstrellas,
+        resumenUsuario
 
       ],
     );
@@ -128,8 +129,7 @@ class Review extends StatelessWidget {
 
     final review = Row(
       children: <Widget>[
-        foto,
-        columnaReview
+        foto, columnaReview
       ],
     );
 
