@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:infocalproject/rounded_button.dart';
+import 'package:places/rounded_button.dart';
 
-class DescriptionPlace extends StatelessWidget {
-
-  //variables
-  String textoTitulo;
+class DescriptionPlace extends StatelessWidget{
+  // variables
+  String textTitulo;
   int cantidadEstrellas;
   String textoDescripcion;
 
-   DescriptionPlace(this.textoTitulo, this.cantidadEstrellas, this.textoDescripcion);
+  DescriptionPlace(this.textTitulo, this.cantidadEstrellas, this.textoDescripcion);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +17,10 @@ class DescriptionPlace extends StatelessWidget {
         right: 20
       ),
       child: Text(
-        textoTitulo,
+        textTitulo,
         style: TextStyle(
           fontFamily: "Lato",
-          fontSize: 50,
+          fontSize: 38,
           fontWeight: FontWeight.bold
         ),
       ),
@@ -42,18 +41,16 @@ class DescriptionPlace extends StatelessWidget {
         right: 5
       ),
       child: Icon(
-        Icons.star,
-        color: Colors.black54
+        Icons.star_border,
+        color: Colors.black54,
       ),
     );
 
-    //fila estrella
-
     List<Container> estrellas = [];
-    for (int i = 0; i < 5; i++) {
-      if (i < cantidadEstrellas) {
+    for(int i = 0; i < 5; i++){
+      if(i < cantidadEstrellas){
         estrellas.add(estrella);
-      } else {
+      }else{
         estrellas.add(estrellaBorde);
       }
     }
@@ -69,7 +66,6 @@ class DescriptionPlace extends StatelessWidget {
         filaEstrellas
       ],
     );
-
     final descripcion = Container(
       margin: EdgeInsets.only(
         top: 10
@@ -78,7 +74,7 @@ class DescriptionPlace extends StatelessWidget {
         textoDescripcion,
         style: TextStyle(
           fontFamily: "Lato",
-          color: Colors.black54
+          color: Colors.black54,
         ),
       ),
     );
@@ -88,11 +84,12 @@ class DescriptionPlace extends StatelessWidget {
       children: <Widget>[
         filaTitulo,
         descripcion,
-        RoundedButton("Navigate"),
+        RoundedButton("Navigate")
       ],
     );
 
     return descriptionPlace;
   }
-
 }
+
+

@@ -5,8 +5,9 @@ class SearchPlaces extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-      color: Colors.blueGrey,
+      color: Colors. blueGrey,
     );
+
   }
 
 }

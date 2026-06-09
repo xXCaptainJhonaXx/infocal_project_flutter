@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 
-class RoundedButton extends StatelessWidget {
-
+class RoundedButton extends StatelessWidget{
   String textoBoton;
   RoundedButton(this.textoBoton);
-
   @override
-  Widget build(BuildContext context) {;
-
-    //button
+  Widget build(BuildContext context) {
     final roundedButton = InkWell(
       child: Container(
         height: 50,
@@ -21,13 +17,12 @@ class RoundedButton extends StatelessWidget {
           gradient: LinearGradient(
             colors: [
               Color(0xFF4268D3),
-              Color(0xFF574ACF),
+              Color(0xFF574ACF)
             ],
-            begin: FractionalOffset(0.0, 0.0),
+            begin: FractionalOffset(0.0, 0.5),
             end: FractionalOffset(1.0, 0.5),
             stops: [0.0, 0.5],
-            tileMode: TileMode.clamp
-          ),
+          )
         ),
         child: Center(
           child: Text(
@@ -48,9 +43,14 @@ class RoundedButton extends StatelessWidget {
           )
         );
       },
+      onDoubleTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Cayendo al boliche..."),
+            )
+        );
+      },
     );
-
     return roundedButton;
   }
-
 }

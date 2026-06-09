@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:infocalproject/cardImage.dart';
-import 'package:infocalproject/gradient_back.dart';
-import 'package:infocalproject/home_appbar.dart';
-import 'package:infocalproject/review.dart';
-import 'package:infocalproject/review_list.dart';
+import 'package:places/card_image.dart';
+import 'package:places/gradient_back.dart';
+import 'package:places/home_app_bar.dart';
+import 'package:places/review.dart';
+import 'package:places/review_list.dart';
+
 import 'description_place.dart';
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-
     final descriptionPlace = Container(
       margin: EdgeInsets.only(
-        top: 300,
+        top: 330,
         left: 30,
-        right: 30,
+        right: 30
       ),
-      //parametros descriptionPlace
-      child: DescriptionPlace("Plaza Roja", 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris odio lectus, lacinia vel congue eu, fringilla id sem. Mauris faucibus diam purus, eget tincidunt arcu vestibulum vitae. Duis non orci vitae augue sodales eleifend consequat vel massa. Suspendisse potenti. Nam nec fermentum sem, eget sodales odio. Fusce sed volutpat massa. In vehicula ut tortor in consequat. Duis bibendum ipsum quis purus faucibus, et fringilla est pulvinar. Sed laoreet non orci non bibendum. Donec rhoncus eget est quis imperdiet. Vestibulum vitae aliquet magna, nec tempus eros. Ut interdum dolor ut elit hendrerit, id porta libero consequat. Nam vulputate elit quis aliquam mollis. Praesent ornare sagittis ornare."),
+      child: DescriptionPlace("Uyuni", 5, "If you read this, this is a copy from the repository of jj. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
     );
 
     final reviewList = Container(
       margin: EdgeInsets.only(
-        top: 70,
+        top: 20,
         left: 30,
         right: 30
       ),
-      child: ReviewList(),
+      child: ReviewList()
     );
-
-    //listView
 
     final listView = ListView(
       children: <Widget>[
@@ -39,17 +36,10 @@ class MyHome extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        title: Text("My Places"),
-      ),
       body: Stack(
         children: <Widget>[
-          Container(
-            color: Colors.white,
-          ),
-          HomeAppBar("Popular"),
           listView,
+          HomeAppBar("Popular")
         ],
       ),
     );

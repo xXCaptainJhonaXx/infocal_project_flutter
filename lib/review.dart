@@ -1,63 +1,59 @@
 import 'package:flutter/material.dart';
 
 class Review extends StatelessWidget {
+
   String pathPhoto;
-  String textoNombreUsuario;
+  String textNombreUsuario;
   String textoResumenUsuario;
-  int cantidadEstrella;
+  int cantidadEstrellas;
   String textoComentario;
 
-  Review(this.pathPhoto, this.textoNombreUsuario, this.textoResumenUsuario, this.cantidadEstrella, this.textoComentario);
-
+  Review(this.pathPhoto, this.textNombreUsuario, this.textoResumenUsuario, this.cantidadEstrellas, this.textoComentario);
 
   @override
-  Widget build(BuildContext context) {
-    //review
+  Widget build(BuildContext context){
+
     final foto = Container(
       margin: EdgeInsets.only(
+        right: 10,
         top: 10,
-        right: 10
       ),
-      width: 60,
-      height: 60,
+      width: 80,
+      height: 80,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
-            image: AssetImage(
-                pathPhoto
-            ),
+          image: AssetImage(
+            pathPhoto
+          ),
           fit: BoxFit.cover
-        ),
+        )
       ),
     );
 
-
-    //NOMBRE DE USUARIO
     final nombreUsuario = Container(
       child: Text(
-          textoNombreUsuario,
-          style: TextStyle(
-            fontFamily: "Lato",
-            fontSize: 20
+        textNombreUsuario,
+        style: TextStyle(
+          fontFamily: "Lato",
+          fontSize: 22
         ),
       ),
     );
 
-    //RESUMEN USUARIO
     final resumenUsuario = Container(
       margin: EdgeInsets.only(
         right: 10,
       ),
       child: Text(
-          textoResumenUsuario,
+        textoResumenUsuario,
         style: TextStyle(
-          color: Colors.black54,
-          fontFamily: "Lato"
+          fontFamily: "Lato",
+          color: Colors.black54
         ),
       ),
     );
 
-    //fila estrella
     final estrella = Container(
       margin: EdgeInsets.only(
           right: 5
@@ -65,7 +61,7 @@ class Review extends StatelessWidget {
       child: Icon(
         Icons.star,
         color: Colors.amber,
-        size: 20,
+        size: 18,
       ),
     );
 
@@ -74,18 +70,17 @@ class Review extends StatelessWidget {
           right: 5
       ),
       child: Icon(
-          Icons.star,
-          color: Colors.black54
+        Icons.star_border,
+        color: Colors.black54,
+        size: 18,
       ),
     );
 
-    //fila estrella
-
     List<Container> estrellas = [];
-    for (int i = 0; i < 5; i++) {
-      if (i < cantidadEstrella) {
+    for(int i = 0; i < 5; i++){
+      if(i < cantidadEstrellas){
         estrellas.add(estrella);
-      } else {
+      }else{
         estrellas.add(estrellaBorde);
       }
     }
@@ -95,27 +90,22 @@ class Review extends StatelessWidget {
       children: estrellas,
     );
 
-    //FILA RESUMEN
-    final filaResumen = Column(
+    final filaResumen = Row(
       children: <Widget>[
-        filaEstrellas,
-        resumenUsuario
-
+        resumenUsuario,
+        filaEstrellas
       ],
     );
 
-    //COMENTARIO
-    
     final comentario = Container(
       child: Text(
-          textoComentario,
+        textoComentario,
           style: TextStyle(
-            fontFamily: "Lato"
-          ),
+          fontFamily: "Lato",
+      ),
       ),
     );
 
-    //COLUMNA REVIEW
     final columnaReview = Column(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,13 +116,12 @@ class Review extends StatelessWidget {
       ],
     );
 
-
     final review = Row(
       children: <Widget>[
-        foto, columnaReview
+        foto,
+        columnaReview
       ],
     );
-
     return review;
   }
 }
