@@ -1,46 +1,85 @@
+// lib/home.dart
+
 import 'package:flutter/material.dart';
-import 'package:places/card_image.dart';
-import 'package:places/gradient_back.dart';
+import 'package:places/card_image_list.dart'; // 👈 Importamos tu componente modularizado
 import 'package:places/home_app_bar.dart';
-import 'package:places/review.dart';
 import 'package:places/review_list.dart';
-
 import 'description_place.dart';
+import 'services/lugar_service.dart';        
+import 'models/lugar_model.dart';           
 
-class MyHome extends StatelessWidget{
+class MyHome extends StatelessWidget {
+  final LugarService _lugarService = LugarService(); 
+
   @override
   Widget build(BuildContext context) {
-    final descriptionPlace = Container(
-      margin: EdgeInsets.only(
-        top: 330,
-        left: 30,
-        right: 30
-      ),
-      child: DescriptionPlace("Uyuni", 5, "If you read this, this is a copy from the repository of jj. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")
-    );
-
-    final reviewList = Container(
-      margin: EdgeInsets.only(
-        top: 20,
-        left: 30,
-        right: 30
-      ),
-      child: ReviewList()
-    );
-
-    final listView = ListView(
-      children: <Widget>[
-        descriptionPlace,
-        reviewList
-      ],
-    );
-
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          listView,
-          HomeAppBar("Popular")
-        ],
+      body: FutureBuilder<List<LugarModel>>(
+        future: _lugarService.listarLugares(), // Consumimos el endpoint GET
+        builder: (context, snapshot) {
+          
+          // 1. Mientras la API responde, mostramos un indicador de carga circular
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          
+          // 2. Si ocurre un error de red o servidor apagado, lo muestra en pantalla de forma segura
+          if (snapshot.hasError) {
+            return Center(child: Text("Error al cargar datos: ${snapshot.error}"));
+          }
+
+          // 3. Si la base de datos de PostgreSQL está vacía
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("No hay lugares registrados en la BD"));
+          }
+
+          // 4. Obtenemos la LISTA COMPLETA de lugares mapeados desde tu Spring Boot
+          final listaLugares = snapshot.data!;
+
+          // Tomamos el primer lugar de la lista para renderizar su texto abajo
+          final lugarSeleccionado = listaLugares.first;
+
+          // 5. LLAMAMOS A TU COMPONENTE PASÁNDOLE LA LISTA DINÁMICA DE LA BD
+          // Esto inyecta los datos en lib/card_image_list.dart y elimina los fantasmas estáticos
+          final cardImageList = CardImageList(lugares: listaLugares);
+
+          // Contenedor de Título, estrellas y descripción dinámica de la Base de Datos
+          final descriptionPlace = Container(
+            margin: const EdgeInsets.only(top: 20, left: 30, right: 30),
+            child: DescriptionPlace(
+              lugarSeleccionado.nombre,       // Dinámico desde la BD (Coroico)
+              5,                              // Puntuación por defecto
+              lugarSeleccionado.descripcion,  // Dinámica desde la BD
+            ),
+          );
+
+          // Contenedor de la lista de reseñas
+          final reviewList = Container(
+            margin: const EdgeInsets.only(top: 20, left: 30, right: 30),
+            child: ReviewList(), 
+          );
+
+          final listView = ListView(
+            padding: EdgeInsets.zero, // Importante: Quita paddings por defecto
+            children: <Widget>[
+              cardImageList,    // 1. Las imágenes dinámicas (La salchicha, Coroico, etc.)
+              descriptionPlace, // 2. Título y estrellas
+              reviewList,       // 3. Reseñas
+            ],
+          );
+
+          // 👇 AQUÍ SE DEFINE EL LOOK VISUAL 👇
+          return Stack(
+            children: <Widget>[
+              // Capa 1 (FONDO TOTAL): El bloque morado con el título "Popular"
+              HomeAppBar("Popular"), 
+              
+              // Capa 2 (AL FRENTE ABSOLUTO): Tu lista con el carrusel de imágenes
+              // Al estar arriba, el scroll horizontal y el botón verde reciben tus clics directamente.
+              listView, 
+            ],
+          );
+        },
       ),
     );
   }

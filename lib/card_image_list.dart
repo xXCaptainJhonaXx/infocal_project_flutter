@@ -1,28 +1,24 @@
+// lib/card_image_list.dart
 import 'package:flutter/material.dart';
-
 import 'card_image.dart';
+import 'models/lugar_model.dart'; 
 
-class CardImageList extends StatelessWidget{
+class CardImageList extends StatelessWidget {
+  final List<LugarModel> lugares;
+
+  const CardImageList({Key? key, required this.lugares}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-
-
-    final cardImageList = Container(
+    return Container(
       height: 330,
-      child: ListView(
+      child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        children: <Widget>[
-          CardImage("assets/images/lugar1.jpg"),
-          CardImage("assets/images/lugar2.jpg"),
-          CardImage("assets/images/lugar3.jpg"),
-          CardImage("assets/images/lugar4.webp"),
-          CardImage("assets/images/lugar5.jpg"),
-          CardImage("assets/images/lugar6.webp"),
-        ],
+        itemCount: lugares.length,
+        itemBuilder: (context, index) {
+          return CardImage(lugares[index].url);
+        },
       ),
     );
-
-    return cardImageList;
-
   }
 }

@@ -1,27 +1,24 @@
+// lib/home_app_bar.dart
 import 'package:flutter/material.dart';
-import 'package:places/card_image.dart';
 import 'package:places/gradient_back.dart';
 
-import 'card_image_list.dart';
+class HomeAppBar extends StatelessWidget {
+  final String textoTitulo;
 
-class HomeAppBar extends StatelessWidget{
-
-  String textoTitulo;
-
-  HomeAppBar(this.textoTitulo);
+  // Constructor optimizado
+  const HomeAppBar(this.textoTitulo, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-
     final titulo = Container(
-      margin: EdgeInsets.only(
-        top: 40,
+      margin: const EdgeInsets.only(
+        top: 45, // Ajuste para que el texto "Popular" no se pegue al borde superior
         left: 30
       ),
       child: Text(
         textoTitulo,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: "Lato",
           fontWeight: FontWeight.w900,
           fontSize: 30,
@@ -30,14 +27,21 @@ class HomeAppBar extends StatelessWidget{
       ),
     );
 
-    final appBar = Stack(
-      children: <Widget>[
-        GradientBack(),
-        titulo,
-        CardImageList()
-      ],
+    // 👇 LA CORRECCIÓN CLAVE 👇
+    return Container(
+      height: 130, // Limitamos el alto total de la barra superior
+      child: Stack(
+        children: <Widget>[
+          // Envolvemos GradientBack en un SizedBox para obligarlo a ser una barra delgada
+          // Esto rompe el escudo invisible y libera el scroll de abajo
+          SizedBox(
+            height: 130,
+            width: double.infinity,
+            child: GradientBack(), 
+          ),
+          titulo,
+        ],
+      ),
     );
-
-    return appBar;
   }
 }

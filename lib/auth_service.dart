@@ -5,8 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
 
+  //URL DEL BACKEND 
   final String baseUrl =
-      "http://backend.surgeontechnology.xyz:8080/api/v1/auth";
+      "http://localhost:8080/api/v1/auth";
 
   Future<bool> iniciarSesion(
     String usuario,
